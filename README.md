@@ -1,6 +1,8 @@
 # Wikipedia-Text-Summarizer
 Automatic text summarization tool written in python.
 
+ ![screenshot](https://github.com/asirihewage/Wikipedia-Text-Summarizer/blob/master/nlp%20sum%20impl.png) 
+
 ## Installation
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install nltk.
