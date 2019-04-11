@@ -3,9 +3,9 @@ Automatic text summarization tool written in python.
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install nltk.
 ```bash
-pip install foobar
+pip install nltk
 ```
 
 ## Import
@@ -76,3 +76,9 @@ summary_sentences = heapq.nlargest(7, sentence_scores, key=sentence_scores.get)
 summary = ' '.join(summary_sentences)  
 print(summary)  
 ```
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
