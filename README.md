@@ -11,9 +11,9 @@ pip install nltk
 ## Import
 
 ```python
-import nltk
+import [nltk](https://www.nltk.org/install.html)
 import bs4 as bs  
-import urllib.request  
+import [urllib.request](https://github.com/python/cpython/blob/3.7/Lib/urllib/request.py)
 import re
 import heapq 
 ```
