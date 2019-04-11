@@ -26,7 +26,7 @@ import heapq
 ## Usage
 
 ```python
-scraped_data = urllib.request.urlopen('http://joaoventura.net/blog/2014/python-android-1/')  
+scraped_data = urllib.request.urlopen('https://en.wikipedia.org/wiki/Object-oriented_programming')  
 article = scraped_data.read()
 
 parsed_article = bs.BeautifulSoup(article,'lxml')
