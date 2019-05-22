@@ -125,7 +125,7 @@ class myHandler(BaseHTTPRequestHandler):
 			##print("Your name is: %s" % form["your_name"].value)
 			self.send_response(200)
 			self.end_headers()
-			self.wfile.write((sum(form["your_name"].value)).encode())
+			self.wfile.write((sum(form["url"].value)).encode())
 			return			
 			
 			
