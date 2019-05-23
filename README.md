@@ -82,6 +82,7 @@ summary = ' '.join(summary_sentences)
 print(summary)  
 ```
 ## Contributing
+The project is done by Asiri (SLIIT UG 3yr) according to the idea given by Ms.Sachindi (SLIIT UN 4yr)
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 Please make sure to update tests as appropriate.
 
