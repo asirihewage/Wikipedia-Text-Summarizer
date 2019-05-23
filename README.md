@@ -81,6 +81,14 @@ summary_sentences = heapq.nlargest(7, sentence_scores, key=sentence_scores.get)
 summary = ' '.join(summary_sentences)  
 print(summary)  
 ```
+## Deployment
+You can deploy this project on Google App Engine by creating a simple debain VM instance. After installing all dependancies using pip you can clone this project and run it. Don't forget to use Use pip3 and python3. 
+Ex: 
+```python
+pip3 install nltk
+python3 wikipy.py
+````
+
 ## Contributing
 The project is done by Asiri (SLIIT UG 3yr) according to the idea given by Ms.Sachindi (SLIIT UN 4yr)
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
