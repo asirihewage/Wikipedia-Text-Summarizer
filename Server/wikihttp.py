@@ -63,9 +63,71 @@ def sum(content):
     return summary
 
 ##server --------------------------------------------------------------
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import socketserver
+import json
+import cgi
+
+class Server(BaseHTTPRequestHandler):
+    def _set_headers(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'application/json')
+        self.end_headers()
+        
+    def do_HEAD(self):
+        self._set_headers()
+        
+    # GET sends back a Hello world message
+    def do_GET(self):
+        self._set_headers()
+        self.wfile.write(json.dumps({'hello': 'world', 'received': 'ok'}))
+        
+    # POST echoes the message adding a JSON field
+    def do_POST(self):
+        ctype, pdict = cgi.parse_header(self.headers.get('content-type'))
+        
+        # refuse to receive non-json content
+        if ctype != 'application/json':
+            self.send_response(400)
+            self.end_headers()
+            return
+        try:
+            # read the message and convert it into a python dictionary
+            length = int(self.headers.get('content-length'))
+            message = json.loads(self.rfile.read(length))
+            print(message)
+            # add a property to the object, just to mess with data
+            message['sum'] = sum(message['link'])
+            
+            # send the message back
+            self._set_headers()
+            self.wfile.write(json.dumps(message).encode('utf-8'))
+
+        except:
+            self.send_response(404)
+            self.end_headers()
+            return
+        
+def run(server_class=HTTPServer, handler_class=Server, port=8008):
+    server_address = ('', port)
+    httpd = server_class(server_address, handler_class)
+    
+    print('Starting httpd on port %d...' % port)
+    httpd.serve_forever()
+    
+if __name__ == "__main__":
+    from sys import argv
+    
+    if len(argv) == 2:
+        run(port=int(argv[1]))
+    else:
+        run()
+        
+'''
 from http.server import BaseHTTPRequestHandler,HTTPServer
 from os import curdir, sep
 import cgi
+import json
 
 PORT_NUMBER = 8000
 
@@ -122,10 +184,16 @@ class myHandler(BaseHTTPRequestHandler):
 		                 'CONTENT_TYPE':self.headers['Content-Type'],
 			})
 
-			##print("Your name is: %s" % form["your_name"].value)
+			print("Your url is: %s" % form["url"].value)
 			self.send_response(200)
 			self.end_headers()
-			self.wfile.write((sum(form["url"].value)).encode())
+			# self.wfile.write((sum(form["url"].value)).encode())
+			data = sum(form["url"].value)
+			#self.wfile.write(json.dumps({'data': data}).encode())
+			print("Your url is: %s" % json.dumps({'data': data}))
+			self.send_header('Content-type', 'application/json')
+			self.wfile.write(json.dumps({'data': data}).encode("utf-8"))
+			print(type(json.dumps({'data': data}).encode("utf-8")))
 			return			
 			
 			
@@ -141,3 +209,5 @@ try:
 except KeyboardInterrupt:
 	print ('^C received, shutting down the web server')
 	server.socket.close()
+
+'''
