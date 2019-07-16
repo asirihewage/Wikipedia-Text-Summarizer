@@ -11,6 +11,7 @@ import {
 import "./HomePage.css";
 
 import {ReactComponent as Logo} from "../assets/logo.svg";
+
 class FormsPage extends Component {
   constructor(props){
     super(props);
