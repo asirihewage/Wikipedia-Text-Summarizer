@@ -50,10 +50,10 @@ class FormsPage extends Component {
           body: 'link=https://en.wikipedia.org/wiki/love',
           mode: 'no-cors'
         })
-       // .then(res => res.json())
+        .then(res => res.json())
         .then(res => {
-          console.log(res.data.sum)})
-        .then( ()=> this.setState({cont: e.target.}))
+          console.log(res)})
+        .then( ()=> this.setState({cont: 'afga'}))
         .catch((err) => {
         console.log(err)})
 
